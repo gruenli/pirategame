@@ -1,15 +1,37 @@
 package pirategame;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
 import javax.swing.*;
-import javax.swing.JFrame;
-import java.awt.*;
+
+
 
 public class board {
-    public static void main(String[] args){
+	
+	JPanel mainPanel;
+	private field[][] mainArray = new field[20][10];
+	
+	public board (){
+		JPanel nurEinTest = new JPanel(new GridLayout(20,10)); 
+		mainPanel = nurEinTest;
+		for (int i = 0; i<50; i++)
+		{nurEinTest.add(new JButton("Test"+i));}
+	//	InitComponents();
+	}
+	
+	public void InitComponents()
+	{
+		mainPanel.removeAll();
+		for ( int row = 0; row < mainArray.length; row++ )
+		{
+			for ( int col = 0; col < mainArray[0].length; col++)
+			{
+				mainArray[row][col] = new field(this);
+				mainPanel.add(mainArray[row][col]);
+			}
+		}
+		
+	}
 
-        JFrame board = new JFrame ("Pirategame");
-        board.setVisible(true);
-        board.setSize(800,600);
-        board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
 }
